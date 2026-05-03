@@ -6,10 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const API_KEY = process.env.API_KEY; // 🔒 clé cachée
+const API_KEY = process.env.API_KEY;
 
 app.post("/api/recette", async (req, res) => {
-
   const { texte } = req.body;
 
   try {
@@ -34,7 +33,7 @@ app.post("/api/recette", async (req, res) => {
   } catch (e) {
     res.status(500).json({ error: "Erreur serveur" });
   }
-
 });
 
-app.listen(3000, () => console.log("Server running"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log("Server running"));
